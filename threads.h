@@ -26,20 +26,18 @@ typedef struct _thread_params
 /**
  * @details Function that executes the Phase 1: Writing.
  * 
- * @param threads Thread identifiers array.
  * @param file_num Number of files to be created.
  * @param filenames Names for the files mentioned above.
  */
-void writing_phase(pthread_t * threads, int file_num, char const *filenames[]);
+void writing_phase(int file_num, char const *filenames[]);
 
 /**
  * @details Function that executes the Phase 2: Reading.
  * 
- * @param threads Thread identifiers array.
  * @param file_num Number of files to be created.
  * @param filenames Names for the files mentioned above.
  */
-void reading_phase(pthread_t * threads, int file_num, char const *filenames[]);
+void reading_phase(int file_num, char const *filenames[]);
 
 
 /**

@@ -8,18 +8,11 @@ int main(int argc, char const *argv[])
 		return 1;
 	}
 
-	int threads_num = argc - 1;
-
-	/* We create a pthread_t array with a threads_num number of elements.*/
-	pthread_t * threads = (pthread_t *)
-		malloc(threads_num * sizeof(pthread_t));
-
 	puts("Executing writing phase:");
-	writing_phase(threads, threads_num, argv);
+	writing_phase(argc - 1, argv);
 
 	puts("Executing reading phase:");
-	reading_phase(threads, threads_num, argv);
+	reading_phase(argc - 1, argv);
 
-	free(threads);
 	return 0;
 }

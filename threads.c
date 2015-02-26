@@ -3,9 +3,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-void writing_phase(pthread_t * threads, int file_num, char const *filenames[])
+void writing_phase(int file_num, char const *filenames[])
 {
 	int i, rand_number, total_lines = 0;
+
+	/* We create a pthread_t array with a file_num number of elements.*/
+	pthread_t * threads = (pthread_t *)
+		malloc(file_num * sizeof(pthread_t));
 
 	/* We create a thread_params array with a file_num number of elements.*/
 	thread_params * params = (thread_params *)
@@ -35,12 +39,17 @@ void writing_phase(pthread_t * threads, int file_num, char const *filenames[])
 		pthread_join(threads[i], (void *) NULL);
 
 	printf("Total of writen lines: %d.\n\n", total_lines);
+	free(threads);
 	free(params);
 }
 
-void reading_phase(pthread_t * threads, int file_num, char const *filenames[])
+void reading_phase(int file_num, char const *filenames[])
 {
 	int i, *lines_num, total_lines = 0;
+
+	/* We create a pthread_t array with a file_num number of elements.*/
+	pthread_t * threads = (pthread_t *)
+		malloc(file_num * sizeof(pthread_t));
 
 	/* We create a thread_params array with a file_num number of elements.*/
 	thread_params * params = (thread_params *)
@@ -68,6 +77,7 @@ void reading_phase(pthread_t * threads, int file_num, char const *filenames[])
 	}
 
 	printf("Total of read lines: %d.\n\n", total_lines);
+	free(threads);
 	free(params);
 }
 

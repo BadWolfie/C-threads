@@ -5,10 +5,12 @@ int main(int argc, char const *argv[])
 {
 	if (argc == 1) {
 		puts("Run like this: ./threads <1st filename> ... <nth filename>");
-		exit(1);
+		return 1;
 	}
 
 	int threads_num = argc - 1;
+
+	/* We create a pthread_t array with a threads_num number of elements.*/
 	pthread_t * threads = (pthread_t *)
 		malloc(threads_num * sizeof(pthread_t));
 

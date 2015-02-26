@@ -26,3 +26,4 @@ To use this API you need to add `#include <pthread.h>` to your code and use its 
 
 A function `start_routine` that can be executed by a thread has the following format:  
 `void * start_routine(void * params);`
+where `params` can be anything that you need to pass as an argument to the thread of `NULL` if it doesn't need any.

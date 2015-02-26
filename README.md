@@ -23,3 +23,6 @@ To use this API you need to add `#include <pthread.h>` to your code and use its 
 
 * `pthread_exit(void * value_ptr);`  
 	This function terminates the calling thread and makes the value `value_ptr` available to any successful join with the terminating thread. 
+
+A function `start_routine` that can be executed by a thread has the following format:  
+`void * start_routine(void * params);`
